@@ -19,11 +19,11 @@ import CTA from "@/sections/CTA";
 export default function Home() {
   return (
     <main className="relative bg-white flex flex-col">
-      {/* 1. Hero starts clean */}
+      {/* 1. HERO - Metrics strip is at the bottom of this component */}
       <Hero />
 
-      {/* 2. Why Us Group: Pulled up closer to Hero */}
-      <div id="why-us" className="scroll-mt-28 -mt-16 md:-mt-24 relative z-10">
+      {/* 2. WHY US GROUP - Removed -mt-24 so it doesn't cover the Hero strip */}
+      <div id="why-us" className="scroll-mt-28 relative z-10">
         <About />
         <div className="-mt-20 md:-mt-32">
           <HowItWorks />
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 3. Properties Group: Compressed stack */}
+      {/* 3. PROPERTIES GROUP */}
       <div id="properties" className="scroll-mt-28">
         <Properties />
         <div className="-mt-20 md:-mt-32">
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 4. Returns Group: Clean ROI Flow */}
+      {/* 4. RETURNS GROUP */}
       <div id="returns" className="scroll-mt-28">
         <Returns />
         <div className="-mt-12 md:-mt-20">
@@ -56,7 +56,7 @@ export default function Home() {
         <Government />
       </div>
 
-      {/* 5. Services Group */}
+      {/* 5. SERVICES GROUP */}
       <div id="services" className="scroll-mt-28">
         <Services />
         <div className="-mt-20 md:-mt-32">
@@ -64,12 +64,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 6. Testimonials: Usually needs its own space for the carousel */}
+      {/* 6. TESTIMONIALS */}
       <div id="testimonials" className="scroll-mt-28 bg-[#FAF9F6]">
         <Testimonials />
       </div>
 
-      {/* 7. Knowledge & FAQ */}
+      {/* 7. KNOWLEDGE & FAQ */}
       <div id="faq" className="scroll-mt-28">
         <Insights />
         <div className="-mt-16 md:-mt-24">
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 8. Contact Section */}
+      {/* 8. CONTACT SECTION */}
       <div id="contact" className="scroll-mt-28">
         <CTA />
       </div>

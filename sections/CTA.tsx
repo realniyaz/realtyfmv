@@ -173,7 +173,7 @@ Notices, <br />
                   </select>
                 </div>
 
-                <motion.button 
+                <motion.button suppressHydrationWarning
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
