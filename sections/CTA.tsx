@@ -162,7 +162,7 @@ Notices, <br />
                 />
 
                 <div className="sm:col-span-2">
-                  <select 
+                  <select suppressHydrationWarning
                     onChange={(e) => setFormData({...formData, budget: e.target.value})}
                     className="w-full bg-[#0B1C3D]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-gray-400 outline-none focus:border-[#F5B300]/50 appearance-none"
                   >

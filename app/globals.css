@@ -19,3 +19,8 @@ section[id] {
 #contact, #properties {
   scroll-margin-top: 100px;
 }
+
+/* This ensures the scroll lands exactly where you want it */
+.scroll-mt-28 {
+  scroll-margin-top: 110px;
+}

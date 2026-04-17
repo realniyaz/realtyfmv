@@ -18,53 +18,69 @@ import CTA from "@/sections/CTA";
 
 export default function Home() {
   return (
-    <main className="relative">
-      {/* Hero section doesn't need an ID usually, or can be #home */}
+    <main className="relative bg-white flex flex-col">
+      {/* 1. Hero starts clean */}
       <Hero />
 
-      {/* Why Us / About Group */}
-      <section id="why-us">
+      {/* 2. Why Us Group: Pulled up closer to Hero */}
+      <div id="why-us" className="scroll-mt-28 -mt-16 md:-mt-24 relative z-10">
         <About />
-        <HowItWorks />
-        <Benefits />
-      </section>
+        <div className="-mt-20 md:-mt-32">
+          <HowItWorks />
+        </div>
+        <div className="-mt-16 md:-mt-24">
+          <Benefits />
+        </div>
+      </div>
 
-      {/* Properties Group */}
-      <section id="properties">
+      {/* 3. Properties Group: Compressed stack */}
+      <div id="properties" className="scroll-mt-28">
         <Properties />
-        <Developments />
-        <Catalysts />
-      </section>
+        <div className="-mt-20 md:-mt-32">
+          <Developments />
+        </div>
+        <div className="-mt-16 md:-mt-24">
+          <Catalysts />
+        </div>
+      </div>
 
-      {/* Returns & Market Analysis Group */}
-      <section id="returns">
+      {/* 4. Returns Group: Clean ROI Flow */}
+      <div id="returns" className="scroll-mt-28">
         <Returns />
-        <Comparison />
-        <Timeline />
+        <div className="-mt-12 md:-mt-20">
+          <Comparison />
+        </div>
+        <div className="-mt-10 md:-mt-16">
+          <Timeline />
+        </div>
         <Government />
-      </section>
+      </div>
 
-      {/* Services & Tech Group */}
-      <section id="services">
+      {/* 5. Services Group */}
+      <div id="services" className="scroll-mt-28">
         <Services />
-        <Technology />
-      </section>
+        <div className="-mt-20 md:-mt-32">
+          <Technology />
+        </div>
+      </div>
 
-      {/* Testimonials */}
-      <section id="testimonials">
+      {/* 6. Testimonials: Usually needs its own space for the carousel */}
+      <div id="testimonials" className="scroll-mt-28 bg-[#FAF9F6]">
         <Testimonials />
-      </section>
+      </div>
 
-      {/* Knowledge & FAQ Group */}
-      <section id="faq">
+      {/* 7. Knowledge & FAQ */}
+      <div id="faq" className="scroll-mt-28">
         <Insights />
-        <FAQ />
-      </section>
+        <div className="-mt-16 md:-mt-24">
+          <FAQ />
+        </div>
+      </div>
 
-      {/* Contact / Lead Generation */}
-      <section id="contact">
+      {/* 8. Contact Section */}
+      <div id="contact" className="scroll-mt-28">
         <CTA />
-      </section>
+      </div>
     </main>
   );
 }

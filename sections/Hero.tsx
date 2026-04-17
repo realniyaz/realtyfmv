@@ -131,13 +131,13 @@ export default function Hero() {
           >
             <div className="overflow-hidden rounded-xl mb-4">
               <img 
-                src="/property-1.jpg" 
-                alt="Dwarka Expressway" 
+                src="/airport.jpg" 
+                alt="Noida Airport Development" 
                 className="h-40 w-full object-cover hover:scale-105 transition-transform duration-700" 
               />
             </div>
-            <p className="text-sm font-semibold tracking-wide">Dwarka Expressway</p>
-            <p className="text-[#F5B300] text-xs font-bold mt-1">536% ROI</p>
+            <p className="text-sm font-semibold tracking-wide">Noida International Airport</p>
+            <p className="text-[#F5B300] text-xs font-bold mt-1">PM Modi inaugurated Jewar Airport on March 28, 2026</p>
           </motion.div>
 
           <motion.div
@@ -157,13 +157,13 @@ export default function Hero() {
           >
             <div className="overflow-hidden rounded-xl mb-4">
               <img 
-                src="/property-2.jpg" 
-                alt="Golf Course Road" 
+                src="/yamunaexpressway.jpg" 
+                alt="Yamuna Expressway" 
                 className="h-32 w-full object-cover opacity-80 hover:opacity-100 transition-all" 
               />
             </div>
-            <p className="text-sm font-semibold">Golf Course Road</p>
-            <p className="text-xs text-gray-400 mt-1">₹22.5 Cr onwards</p>
+            <p className="text-sm font-semibold">Yamuna Expressway</p>
+            <p className="text-xs text-gray-400 mt-1">536% Appreciation in Last 5 years</p>
           </motion.div>
 
           <motion.div 

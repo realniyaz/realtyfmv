@@ -7,7 +7,18 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimations';
 
 const comparisonData = [
   {
-    name: "Dwarka Expressway Real Estate",
+  name: "Jewar Airport Aviation Corridor",
+  returns: "840%", // Projected total appreciation over 10 years
+  annual: "62%",   // Aggressive growth due to phase 1 completion
+  risk: "Low-Medium", // Low risk due to massive government backing/infrastructure
+  liquidity: "High",  // High demand for land/plots near the terminal
+  tax: "LTCG Benefits",
+  invest: "₹1.2Cr", // Typical entry for premium plots/commercial
+  highlight: true,
+  description: "Strategic investment in the immediate periphery of Asia's largest upcoming airport. Includes high-yield commercial plots and integrated townships."
+},
+  {
+    name: "Yamuna Expressway Real Estate",
     returns: "536%",
     annual: "45%",
     risk: "Medium",

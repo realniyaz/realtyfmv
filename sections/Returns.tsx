@@ -7,15 +7,15 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimations';
 
 const kpis = [
   {
-    value: "536%",
-    title: "Dwarka Expressway ROI",
-    desc: "Verified returns for early investors since 2014.",
+    value: "840%",
+    title: "Jewar Airport Aviation Corridor",
+    desc: "Verified returns for early investors.",
     icon: <TrendingUp size={20} />,
   },
   {
-    value: "158%",
-    title: "5-Year Capital Growth",
-    desc: "Average appreciation across luxury NCR corridors.",
+    value: "62%",
+    title: "Aggressive growth due to phase 1 completion",
+    desc: "High demand for land/plots near the terminal.",
     icon: <BarChart3 size={20} />,
   },
   {
@@ -132,7 +132,7 @@ export default function Returns() {
           >
             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700 z-10" />
             <img
-              src="/infrastructure.jpg"
+              src="/airport.jpg"
               alt="Public Infrastructure"
               className="w-full h-[350px] object-cover transition-transform duration-[2s] group-hover:scale-110"
             />

@@ -112,7 +112,7 @@ export default function Properties() {
         {/* REFINED FILTER TABS */}
         <div className="flex gap-4 mb-12 overflow-x-auto pb-4 no-scrollbar">
           {["all", "buy", "rent", "featured"].map((tab) => (
-            <button
+            <button suppressHydrationWarning
               key={tab}
               onClick={() => setActive(tab)}
               className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap border ${

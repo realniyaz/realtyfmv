@@ -121,7 +121,7 @@ export default function Timeline() {
                 <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.2 }}
-                src="/infrastructure.jpg" 
+                src="/dwarka.jpg" 
                 className="w-full h-full object-cover" 
                 alt="Highway Infrastructure" 
                 />
@@ -146,13 +146,13 @@ export default function Timeline() {
                 <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.2 }}
-                src="/metro-station.jpg" 
+                src="/metro.jpg" 
                 className="w-full h-full object-cover" 
                 alt="Rapid Metro Station" 
                 />
                 <div className="absolute bottom-8 left-8 z-20">
                 <p className="text-white font-serif italic text-2xl md:text-3xl tracking-wide">
-                    Future Transit Hubs
+                    Metro Connection
                 </p>
                 </div>
             </div>

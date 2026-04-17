@@ -6,8 +6,10 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  ArrowUp,  
+  ArrowUp,   
   ShieldCheck,
+  Globe,
+  Landmark
 } from 'lucide-react';
 
 export default function Footer() {
@@ -27,113 +29,121 @@ export default function Footer() {
           {/* LOGO & MISSION - 4 COLS */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-4 mb-8 group cursor-pointer">
-              {/* LOGO CONTAINER */}
               <div className="relative">
-                {/* Background Glow Effect */}
                 <div className="absolute inset-0 bg-[#F5B300] blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-                
-                {/* ACTUAL LOGO - Ensure image is in public/logo.png */}
                 <motion.img 
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   src="/logorealtyfm.png" 
                   alt="RealtyFM Logo"
-                  className="relative w-24 h-24 object-contain transition-transform duration-500"
+                  className="relative w-20 h-20 object-contain transition-transform duration-500"
                 />
               </div>
 
-              {/* BRAND NAME */}
               <div className="flex flex-col">
-                <span className="font-serif text-2xl tracking-tight text-white leading-none">
-                  Realty<span className="text-[#F5B300]">FM</span>
+                <span className="font-serif font-bold text-2xl tracking-tight text-white leading-none">
+                  Realty<span className="text-[#F5B300] italic ml-0.5">FM</span>
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.4em] text-gray-500 font-black mt-1">
+                <span className="text-[9px] uppercase tracking-[0.4em] text-gray-500 font-black mt-2 italic">
                   Your Finance Manager
                 </span>
               </div>
             </div>
 
-            <p className="text-gray-400 text-lg font-light leading-relaxed mb-8 max-w-sm">
-              India's premier institutional-grade NRI real estate advisory. 
-              Engineering wealth through strategic corridor intelligence.
+            <p className="text-gray-400 text-lg font-serif italic font-light leading-relaxed mb-8 max-w-sm">
+              "Engineering wealth for the global Indian through strategic corridor intelligence and institutional-grade advisory."
             </p>
-
           </div>
 
           {/* QUICK LINKS - 2 COLS */}
-<div className="lg:col-span-2">
-  <h4 className="text-[#F5B300] font-bold text-[10px] uppercase tracking-[0.3em] mb-8">Navigation</h4>
-  <ul className="space-y-4 text-sm font-light text-gray-300">
-    {[
-      { name: "Properties", href: "#properties" },
-      { name: "Returns", href: "#returns" },
-      { name: "Why Us", href: "#why-us" },
-      { name: "Insights", href: "#faq" }, // Assuming Insights is part of the FAQ/Insights group
-      { name: "FAQ", href: "#faq" }
-    ].map((item) => (
-      <li key={item.name}>
-        <a 
-          href={item.href} 
-          className="hover:text-[#F5B300] transition-colors cursor-pointer flex items-center group"
-        >
-          <span className="w-0 group-hover:w-4 h-[1px] bg-[#F5B300] transition-all duration-300 mr-0 group-hover:mr-2" />
-          {item.name}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+          <div className="lg:col-span-2">
+            <h4 className="text-[#F5B300] font-bold text-[10px] uppercase tracking-[0.3em] mb-8">Navigation</h4>
+            <ul className="space-y-4 text-sm font-light text-gray-300">
+              {[
+                { name: "Properties", href: "#properties" },
+                { name: "Returns", href: "#returns" },
+                { name: "Why Us", href: "#why-us" },
+                { name: "FAQ", href: "#faq" }
+              ].map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} className="hover:text-[#F5B300] hover:italic transition-all flex items-center group">
+                    <span className="w-0 group-hover:w-4 h-[1px] bg-[#F5B300] transition-all duration-300 mr-0 group-hover:mr-2" />
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {/* RESOURCES - 2 COLS */}
-          {/* RESOURCES / INTELLIGENCE - 2 COLS */}
-<div className="lg:col-span-2">
-  <h4 className="text-[#F5B300] font-bold text-[10px] uppercase tracking-[0.3em] mb-8">Intelligence</h4>
-  <ul className="space-y-4 text-sm font-light text-gray-300">
-    {["NRI Tax Guide", "FEMA Compliance", "RERA Directory", "Market Signals"].map((item) => (
-      <li key={item}>
-        <a 
-          href="#contact" 
-          className="hover:text-[#F5B300] transition-colors cursor-pointer flex items-center group"
-        >
-          <span className="w-0 group-hover:w-4 h-[1px] bg-[#F5B300] transition-all duration-300 mr-0 group-hover:mr-2" />
-          {item}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+          {/* INTELLIGENCE - 2 COLS */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[#F5B300] font-bold text-[10px] uppercase tracking-[0.3em] mb-8">Intelligence</h4>
+            <ul className="space-y-4 text-sm font-light text-gray-300">
+              {["NRI Tax Guide", "FEMA Compliance", "RERA Directory", "Market Signals"].map((item) => (
+                <li key={item}>
+                  <a href="#contact" className="hover:text-[#F5B300] hover:italic transition-all flex items-center group">
+                    <span className="w-0 group-hover:w-4 h-[1px] bg-[#F5B300] transition-all duration-300 mr-0 group-hover:mr-2" />
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {/* CONTACT INFO - 4 COLS */}
+          {/* GLOBAL DESK INFO - 4 COLS (DUBAI + INDIA) */}
           <div className="lg:col-span-4">
             <h4 className="text-[#F5B300] font-bold text-[10px] uppercase tracking-[0.3em] mb-8">Global Desk</h4>
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#F5B300] flex-shrink-0">
-                  <Phone size={18} />
+            <div className="space-y-8">
+              
+              {/* DUBAI DESK */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Globe size={14} className="text-[#F5B300]" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white italic">Dubai Global Desk</span>
                 </div>
-                <div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Call Us</p>
-                  <p className="text-white font-medium">+91-9899152327</p>
+                <div className="flex items-start gap-4">
+                  <MapPin size={18} className="text-gray-500 mt-1 flex-shrink-0" />
+                  <p className="text-gray-300 text-sm font-light leading-relaxed italic">
+                    B 3003, Latifa Tower, Sheikh Zayed Rd, Dubai, UAE
+                  </p>
                 </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#F5B300] flex-shrink-0">
-                  <Mail size={18} />
+                <div className="flex items-center gap-4">
+                  <Phone size={16} className="text-[#F5B300] flex-shrink-0" />
+                  <a href="tel:+971526519798" className="text-white font-medium hover:text-[#F5B300] transition-colors tabular-nums">
+                    +971 52 651 9798
+                  </a>
                 </div>
-                <div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Email</p>
-                  <p className="text-white font-medium">info@realtyfm.com</p>
+              </div>
+
+              <div className="h-[1px] w-full bg-white/5" />
+
+              {/* INDIA HEADQUARTERS */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Landmark size={14} className="text-[#F5B300]" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white italic">India Headquarters</span>
                 </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#F5B300] flex-shrink-0">
-                  <MapPin size={18} />
+                <div className="flex items-start gap-4">
+                  <MapPin size={18} className="text-gray-500 mt-1 flex-shrink-0" />
+                  <p className="text-gray-300 text-sm font-light leading-relaxed italic">
+                    B 625, Alphathum, Sector-90, Noida, UP, India
+                  </p>
                 </div>
-                <div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Headquarters</p>
-                  <p className="text-white font-medium">B 625, Bhutani Alphathum, Sector-90, Noida</p>
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-4">
+                    <Phone size={16} className="text-[#F5B300] flex-shrink-0" />
+                    <a href="tel:+919899152327" className="text-white font-medium hover:text-[#F5B300] transition-colors tabular-nums">
+                      +91 98991 52327
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Mail size={16} className="text-[#F5B300] flex-shrink-0" />
+                    <a href="mailto:info@realtyfm.com" className="text-white font-medium hover:text-[#F5B300] transition-colors italic">
+                      info@realtyfm.com
+                    </a>
+                  </div>
                 </div>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -151,51 +161,22 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col md:flex-row items-center gap-8">
-  {/* LEGAL LINKS */}
-  <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
-    <Link 
-      href="/privacy-policy" 
-      className="hover:text-[#F5B300] transition-colors duration-300"
-    >
-      Privacy
-    </Link>
-    <Link 
-      href="/terms" 
-      className="hover:text-[#F5B300] transition-colors duration-300"
-    >
-      Terms
-    </Link>
-    <Link 
-      href="/disclaimer" 
-      className="hover:text-[#F5B300] transition-colors duration-300"
-    >
-      Disclaimer
-    </Link>
-  </div>
-  
-  {/* BACK TO TOP BUTTON */}
-  <button
-    suppressHydrationWarning
-    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    aria-label="Back to top"
-    className="group relative w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F5B300] hover:border-[#F5B300] hover:text-[#0B1C3D] transition-all duration-500 shadow-lg hover:shadow-[#F5B300]/20"
-  >
-    <ArrowUp size={18} className="group-hover:-translate-y-1 transition-transform duration-300" />
-    
-    {/* Floating label that appears on hover */}
-    <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-transform bg-[#F5B300] text-[#0B1C3D] text-[9px] font-bold px-2 py-1 rounded-md pointer-events-none uppercase tracking-tighter">
-      Top
-    </span>
-  </button>
-</div>
-
+            <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+              <Link href="/privacy-policy" className="hover:text-[#F5B300] hover:italic transition-all">Privacy</Link>
+              <Link href="/terms" className="hover:text-[#F5B300] hover:italic transition-all">Terms</Link>
+              <Link href="/disclaimer" className="hover:text-[#F5B300] hover:italic transition-all">Disclaimer</Link>
+            </div>
+            
+            <button
+              suppressHydrationWarning
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group relative w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#F5B300] hover:border-[#F5B300] hover:text-[#0B1C3D] transition-all duration-500 shadow-lg hover:shadow-[#F5B300]/20"
+            >
+              <ArrowUp size={18} className="group-hover:-translate-y-1 transition-transform duration-300" />
+              <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-transform bg-[#F5B300] text-[#0B1C3D] text-[9px] font-bold px-2 py-1 rounded-md uppercase tracking-tighter">Top</span>
+            </button>
+          </div>
         </div>
-
-        {/* FINAL LOGO WATERMARK */}
-        <div className="mt-16 opacity-[0.02] select-none pointer-events-none text-center">
-            <h1 className="text-[15vw] font-serif font-black leading-none uppercase tracking-tighter">RealtyFM</h1>
-        </div>
-
       </div>
     </footer>
   );
