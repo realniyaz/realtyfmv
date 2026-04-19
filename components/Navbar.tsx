@@ -104,7 +104,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.95 }}
                 className="hidden sm:block bg-[#FACC15] text-[#1E293B] px-8 py-3 rounded-full font-serif font-bold italic text-[14px] hover:bg-[#EAB308] transition-all shadow-md active:scale-95"
               >
-                Call Now
+                Whats'app Now
               </motion.button>
             </a>
 

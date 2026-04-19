@@ -149,7 +149,7 @@ Notices, <br />
                 <input
                 suppressHydrationWarning
                   required
-                  placeholder="Phone (with code)"
+                  placeholder="Phone Number"
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   className="w-full bg-[#0B1C3D]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder-gray-500 outline-none focus:border-[#F5B300]/50"
                 />

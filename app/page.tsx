@@ -29,15 +29,15 @@ export default function Home() {
           <HowItWorks />
         </div>
         <div className="-mt-16 md:-mt-24">
-          <Benefits />
+          <Properties />
         </div>
       </div>
 
       {/* 3. PROPERTIES GROUP */}
       <div id="properties" className="scroll-mt-28">
-        <Properties />
+        <Developments />
         <div className="-mt-20 md:-mt-32">
-          <Developments />
+          <Benefits />
         </div>
         <div className="-mt-16 md:-mt-24">
           <Catalysts />
@@ -50,9 +50,9 @@ export default function Home() {
         <div className="-mt-12 md:-mt-20">
           <Comparison />
         </div>
-        <div className="-mt-10 md:-mt-16">
+        {/* <div className="-mt-10 md:-mt-16">
           <Timeline />
-        </div>
+        </div> */}
         <Government />
       </div>
 

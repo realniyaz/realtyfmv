@@ -81,9 +81,6 @@ export default function About() {
         <motion.h2 variants={itemVariants} className="font-serif text-5xl md:text-7xl text-[#0B1C3D] leading-[1.1] mb-8">
           Building Wealth, <span className="italic text-gray-300">Building Trust</span>
         </motion.h2>
-        <motion.p variants={itemVariants} className="text-gray-500 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light">
-          Founded by NRIs to solve the transparency gap in Indian real estate. We combine local intelligence with global service standards.
-        </motion.p>
       </motion.div>
 
       {/* 🧱 CORE PILLARS */}

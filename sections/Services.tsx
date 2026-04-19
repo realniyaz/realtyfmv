@@ -53,24 +53,24 @@ const services = [
     tags: ["Timing analysis", "Buyer matching", "Tax optimization"],
     icon: <LogOut />
   },
-  {
-    title: "Tax Planning",
-    desc: "LTCG optimization, TDS certificates, and DTAA benefit structuring.",
-    tags: ["LTCG planning", "TDS reduction", "DTAA benefits"],
-    icon: <Receipt />
-  },
-  {
-    title: "Dedicated NRI Desk",
-    desc: "24/7 support with a dedicated relationship manager and virtual consultations.",
-    tags: ["24/7 support", "Personal RM", "Multi-timezone"],
-    icon: <Headphones />
-  },
-  {
-    title: "Home Loan Assistance",
-    desc: "Tie-ups with top banks for NRI home loans with seamless processing.",
-    tags: ["Best rates", "Doc processing", "Pre-approval"],
-    icon: <Banknote />
-  },
+  // {
+  //   title: "Tax Planning",
+  //   desc: "LTCG optimization, TDS certificates, and DTAA benefit structuring.",
+  //   tags: ["LTCG planning", "TDS reduction", "DTAA benefits"],
+  //   icon: <Receipt />
+  // },
+  // {
+  //   title: "Dedicated NRI Desk",
+  //   desc: "24/7 support with a dedicated relationship manager and virtual consultations.",
+  //   tags: ["24/7 support", "Personal RM", "Multi-timezone"],
+  //   icon: <Headphones />
+  // },
+  // {
+  //   title: "Home Loan Assistance",
+  //   desc: "Tie-ups with top banks for NRI home loans with seamless processing.",
+  //   tags: ["Best rates", "Doc processing", "Pre-approval"],
+  //   icon: <Banknote />
+  // },
 ];
 
 export default function Services() {
