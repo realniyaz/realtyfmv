@@ -15,10 +15,13 @@ import Technology from "@/sections/Technology";
 import Insights from "@/sections/Insights";
 import FAQ from "@/sections/Faqs";
 import CTA from "@/sections/CTA";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="relative bg-white flex flex-col">
+      <Navbar/>
       {/* 1. HERO - Metrics strip is at the bottom of this component */}
       <Hero />
 
@@ -81,6 +84,7 @@ export default function Home() {
       <div id="contact" className="scroll-mt-28">
         <CTA />
       </div>
+      <Footer/>
     </main>
   );
 }

@@ -4,6 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Scale, Gavel, ShieldAlert, Globe, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default function TermsOfService() {
   const lastUpdated = "April 15, 2026";
@@ -42,7 +44,8 @@ export default function TermsOfService() {
   ];
 
   return (
-    <main className="bg-[#FAF9F6] min-h-screen pb-24 font-sans">
+    <div className="flex flex-col min-h-screen bg-[#FAF9F6]">
+      <Navbar/>
       {/* 🏙️ HERO SECTION */}
       <section className="bg-[#0B1C3D] pt-44 pb-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
@@ -50,7 +53,7 @@ export default function TermsOfService() {
         
         <div className="max-w-5xl mx-auto relative z-10 text-center">
           <Link href="/" className="inline-flex items-center gap-2 text-[#F5B300] text-xs font-bold uppercase tracking-[0.3em] mb-12 hover:tracking-[0.4em] transition-all">
-            <ArrowLeft size={16} /> Return to Dashboard
+            <ArrowLeft size={16} /> Return to Home
           </Link>
           
           <motion.h1 
@@ -144,6 +147,7 @@ export default function TermsOfService() {
           </div>
         </div>
       </section>
-    </main>
+      <Footer/>
+    </div>
   );
 }

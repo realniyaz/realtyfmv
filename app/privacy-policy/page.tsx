@@ -4,6 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Lock, Eye, FileText, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default function PrivacyPolicy() {
   const lastUpdated = "April 15, 2026";
@@ -32,7 +34,8 @@ export default function PrivacyPolicy() {
   ];
 
   return (
-    <main className="bg-[#FAF9F6] min-h-screen pb-24">
+    <div className="flex flex-col min-h-screen bg-[#FAF9F6] font-sans">
+      <Navbar/>
       {/* 🏛️ HEADER SECTION */}
       <section className="bg-[#0B1C3D] pt-44 pb-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(245,179,0,0.05),transparent_50%)]" />
@@ -105,6 +108,7 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </section>
-    </main>
+      <Footer/>
+    </div>
   );
 }

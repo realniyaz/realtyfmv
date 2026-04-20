@@ -4,6 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, TrendingUp, Landmark, ShieldCheck, ArrowLeft, Info } from 'lucide-react';
 import Link from 'next/link';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 export default function DisclaimerPage() {
   const lastReviewed = "April 2026";
@@ -32,7 +34,10 @@ export default function DisclaimerPage() {
   ];
 
   return (
-    <main className="bg-[#FAF9F6] min-h-screen pb-24 font-sans">
+    /* CHANGED: Added 'flex' and 'flex-col' to manage footer placement */
+    <div className="bg-[#FAF9F6] min-h-screen flex flex-col font-sans">
+      <Navbar />
+      
       {/* 🏛️ MINIMALIST HEADER */}
       <section className="bg-white border-b border-gray-100 pt-44 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
@@ -60,7 +65,8 @@ export default function DisclaimerPage() {
       </section>
 
       {/* 📄 DISCLAIMER CARDS */}
-      <section className="max-w-4xl mx-auto px-6 py-20">
+      {/* CHANGED: Added 'flex-1' so this section grows to fill space, pushing Footer down */}
+      <section className="flex-1 max-w-4xl mx-auto px-6 py-20 w-full">
         <div className="grid gap-8">
           {disclaimers.map((item, index) => (
             <motion.div
@@ -103,6 +109,8 @@ export default function DisclaimerPage() {
           </div>
         </motion.div>
       </section>
-    </main>
+
+      <Footer />
+    </div>
   );
 }
