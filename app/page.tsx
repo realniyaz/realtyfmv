@@ -31,14 +31,14 @@ export default function Home() {
         <div className="-mt-20 md:-mt-32">
           <HowItWorks />
         </div>
-        <div className="-mt-16 md:-mt-24">
+        {/* <div className="-mt-16 md:-mt-24">
           <Properties />
-        </div>
+        </div> */}
       </div>
 
       {/* 3. PROPERTIES GROUP */}
       <div id="properties" className="scroll-mt-28">
-        <Developments />
+        <Properties />
         <div className="-mt-20 md:-mt-32">
           <Benefits />
         </div>

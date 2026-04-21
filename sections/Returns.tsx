@@ -82,10 +82,10 @@ export default function Returns() {
             <h2 className="font-serif text-5xl md:text-7xl text-[#0B1C3D] leading-[1.1] mb-6 tracking-tight">
               Returns That <span className="italic text-gray-400 font-light">Endure</span>
             </h2>
-            <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
+            {/* <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
               Every figure is cross-verified by independent market analysts and 
               authenticated transaction records from our global NRI portfolio.
-            </p>
+            </p> */}
           </div>
         </motion.div>
 

@@ -26,10 +26,10 @@ const faqs = [
     q: "How does RealtyFM ensure project credibility?",
     a: "Our due diligence is institutional-grade. We go beyond RERA; we perform forensic title verification, developer liquidity audits, and construction milestone tracking before any property is listed on our platform.",
   },
-  {
-    q: "What is the process for buying property from abroad?",
-    a: "Our digital-first ecosystem allows for 100% remote execution. From virtual drone tours and digital document verification to e-signing and remote registration through a registered PoA, your physical presence is never required.",
-  },
+  // {
+  //   q: "What is the process for buying property from abroad?",
+  //   a: "Our digital-first ecosystem allows for 100% remote execution. From virtual drone tours and digital document verification to e-signing and remote registration through a registered PoA, your physical presence is never required.",
+  // },
 ];
 
 export default function FAQ() {

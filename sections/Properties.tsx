@@ -2,123 +2,81 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, MapPin, Building2, CheckCircle2 } from "lucide-react";
+import { ArrowRight, MapPin, Building2, CheckCircle2, X, MessageCircle, Send, Check } from "lucide-react";
 
 const properties = [
-  {
-    title: "Smartworld One DXP",
-    location: "Dwarka Expressway, Sector 113",
-    type: "Apartments",
-    price: "₹1.85 Cr onwards",
-    roi: "536%",
-    tag: "Hot Selling",
-    category: "buy",
-    image: "/property-1.jpg",
-  },
-  {
-    title: "Krisumi Waterfall Residences",
-    location: "Sector 36A, Gurgaon",
-    type: "Luxury Apartments",
-    price: "₹2.45 Cr onwards",
-    roi: "210%",
-    tag: "Premium",
-    category: "featured",
-    image: "/property-2.jpg",
-  },
-  {
-    title: "M3M Crown Sector 111",
-    location: "Dwarka Expressway",
-    type: "Luxury Residences",
-    price: "₹3.20 Cr onwards",
-    roi: "180%",
-    tag: "New Launch",
-    category: "buy",
-    image: "/property-3.jpg",
-  },
-  {
-    title: "DLF Privana South",
-    location: "Sector 76-77, Gurgaon",
-    type: "Ultra-Luxury Penthouses",
-    price: "₹5.50 Cr onwards",
-    roi: "165%",
-    tag: "Ultra Luxury",
-    category: "featured",
-    image: "/property-4.jpg",
-  },
-  {
-    title: "Godrej Zenith",
-    location: "Sector 89, New Gurgaon",
-    type: "Premium Commercial",
-    price: "₹85 Lakh onwards",
-    roi: "145%",
-    tag: "Commercial",
-    category: "rent",
-    image: "/property-5.jpg",
-  },
-  {
-    title: "Adani Samsara Vilasa",
-    location: "Sector 63A, Gurgaon",
-    type: "Exclusive Villas",
-    price: "₹8.90 Cr onwards",
-    roi: "190%",
-    tag: "Ready to Move",
-    category: "buy",
-    image: "/property-6.jpg",
-  },
+  { id: 1, title: "Smartworld One DXP", location: "Dwarka Expressway, Sector 113", type: "Apartments", price: "₹1.85 Cr onwards", roi: "536%", tag: "Hot Selling", category: "buy", image: "/property-1.jpg" },
+  { id: 2, title: "Krisumi Waterfall Residences", location: "Sector 36A, Gurgaon", type: "Luxury Apartments", price: "₹2.45 Cr onwards", roi: "210%", tag: "Premium", category: "featured", image: "/property-2.jpg" },
+  { id: 3, title: "M3M Crown Sector 111", location: "Dwarka Expressway", type: "Luxury Residences", price: "₹3.20 Cr onwards", roi: "180%", tag: "New Launch", category: "buy", image: "/property-3.jpg" },
+  { id: 4, title: "DLF Privana South", location: "Sector 76-77, Gurgaon", type: "Ultra-Luxury", price: "₹5.50 Cr onwards", roi: "165%", tag: "Ultra Luxury", category: "featured", image: "/property-4.jpg" },
+  { id: 5, title: "Godrej Zenith", location: "Sector 89, New Gurgaon", type: "Commercial Hub", price: "₹85 Lakh onwards", roi: "145%", tag: "Commercial", category: "rent", image: "/property-5.jpg" },
+  { id: 6, title: "Adani Samsara Vilasa", location: "Sector 63A, Gurgaon", type: "Exclusive Villas", price: "₹8.90 Cr onwards", roi: "190%", tag: "Ready to Move", category: "buy", image: "/property-6.jpg" },
 ];
 
 export default function Properties() {
   const [active, setActive] = useState("all");
+  const [selectedProp, setSelectedProp] = useState<any>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const filtered =
-    active === "all"
-      ? properties
-      : properties.filter((p) => p.category === active);
+  const filtered = active === "all" ? properties : properties.filter((p) => p.category === active);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        setIsSuccess(false);
+        setSelectedProp(null);
+      }, 3000);
+    }, 1500);
+  };
 
   return (
-    <section className="bg-[#FAF9F6] py-24 md:py-32 overflow-hidden border-y border-gray-100">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-[#FAF9F6] py-0 relative overflow-visible">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* HEADER SECTION */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-8">
           <div className="max-w-2xl">
             <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-[11px] tracking-[0.4em] text-[#F5B300] mb-4 font-black uppercase"
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-[10px] tracking-[0.4em] text-[#F5B300] mb-3 font-black uppercase italic"
             >
               Curated Portfolio
             </motion.p>
             <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-serif text-4xl md:text-6xl text-[#0B1C3D] leading-tight"
+              className="font-serif text-4xl md:text-5xl text-[#0B1C3D] leading-tight font-bold"
             >
               Premium Investment <br />
-              <span className="italic text-gray-400">Opportunities</span>
+              <span className="italic text-gray-400 font-light">Opportunities</span>
             </motion.h2>
           </div>
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-gray-400 text-sm font-light lg:text-right"
+            className="text-gray-400 text-sm font-light italic md:text-right leading-relaxed max-w-sm"
           >
-            {properties.length} Exclusive Listings <br /> 
-            Across High-Growth Corridors
+            A bespoke selection of North India&apos;s highest appreciating assets.
           </motion.p>
         </div>
 
-        {/* REFINED FILTER TABS */}
-        <div className="flex gap-4 mb-12 overflow-x-auto pb-4 no-scrollbar">
+        {/* FILTER TABS */}
+        <div className="flex gap-3 mb-10 overflow-x-auto pb-4 no-scrollbar">
           {["all", "buy", "rent", "featured"].map((tab) => (
             <button suppressHydrationWarning
               key={tab}
               onClick={() => setActive(tab)}
-              className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap border ${
+              className={`px-7 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 border ${
                 active === tab
-                  ? "bg-[#0B1C3D] text-white border-[#0B1C3D] shadow-xl"
-                  : "bg-white text-gray-400 border-gray-100 hover:border-[#F5B300] hover:text-[#F5B300]"
+                  ? "bg-[#0B1C3D] text-white border-[#0B1C3D] shadow-lg"
+                  : "bg-white text-gray-400 border-gray-100 hover:text-[#F5B300]"
               }`}
             >
               {tab}
@@ -126,24 +84,19 @@ export default function Properties() {
           ))}
         </div>
 
-        {/* ANIMATED GRID */}
-        <motion.div 
-          layout
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        {/* PROPERTY GRID - Fixed spacing and responsiveness */}
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <AnimatePresence mode="popLayout">
             {filtered.map((item) => (
               <motion.div
                 layout
-                key={item.title}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, ease: "circOut" }}
-                className="group relative bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500"
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="group relative bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
               >
-                {/* IMAGE CONTAINER */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-56 overflow-hidden flex-shrink-0">
                   <motion.img
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.8 }}
@@ -151,47 +104,39 @@ export default function Properties() {
                     alt={item.title}
                     className="h-full w-full object-cover"
                   />
-                  
-                  {/* OVERLAY BADGES */}
-                  <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    <span className="bg-white/90 backdrop-blur-md text-[#0B1C3D] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-tighter shadow-sm">
-                      {item.tag}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-4 right-4 bg-[#0B1C3D]/80 backdrop-blur-md text-[#F5B300] text-[10px] font-bold px-3 py-1.5 rounded-lg">
-                    Est. ROI {item.roi}
-                  </div>
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[#0B1C3D] text-[9px] font-black px-3 py-1.5 rounded-full uppercase italic shadow-sm">{item.tag}</div>
+                  <div className="absolute bottom-4 right-4 bg-[#0B1C3D]/90 backdrop-blur-md text-[#F5B300] text-[9px] font-bold px-3 py-1.5 rounded-lg italic tracking-widest">ROI {item.roi}</div>
                 </div>
 
-                {/* CONTENT AREA */}
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="font-serif text-xl text-[#0B1C3D] group-hover:text-[#F5B300] transition-colors duration-300">
-                      {item.title}
-                    </h3>
-                    <ArrowUpRight size={18} className="text-gray-300 group-hover:text-[#F5B300] transition-colors" />
-                  </div>
-
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center gap-2 text-gray-400 text-xs">
-                      <MapPin size={14} className="text-[#F5B300]" />
-                      {item.location}
+                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                  <h3 className="font-serif text-xl md:text-2xl font-bold text-[#0B1C3D] group-hover:text-[#F5B300] transition-colors duration-300 leading-tight mb-4">
+                    {item.title}
+                  </h3>
+                  
+                  <div className="space-y-2 mb-auto pb-6">
+                    <div className="flex items-center gap-2 text-gray-400 text-xs italic">
+                      <MapPin size={12} className="text-[#F5B300] flex-shrink-0" /> 
+                      <span className="truncate">{item.location}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-400 text-xs">
-                      <Building2 size={14} className="text-[#F5B300]" />
-                      {item.type}
+                    <div className="flex items-center gap-2 text-gray-400 text-xs italic">
+                      <Building2 size={12} className="text-[#F5B300] flex-shrink-0" /> 
+                      <span>{item.type}</span>
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center pt-5 border-t border-gray-50">
-                    <div>
-                      <p className="text-[10px] uppercase text-gray-400 tracking-widest mb-1">Starting Price</p>
-                      <p className="font-bold text-[#0B1C3D] text-lg">{item.price}</p>
-                    </div>
-                    <div className="flex items-center gap-1 text-[10px] font-black text-[#F5B300] uppercase bg-[#F5B300]/5 px-2 py-1 rounded">
-                      <CheckCircle2 size={10} />
-                      RERA
+                  <div className="flex flex-col gap-4 pt-5 border-t border-gray-50">
+                    <div className="flex justify-between items-end">
+                       <div className="flex flex-col">
+                          <p className="text-[9px] uppercase text-gray-400 font-bold mb-1 tracking-widest leading-none">Starting At</p>
+                          <p className="font-bold text-[#0B1C3D] text-lg italic leading-none tabular-nums">{item.price}</p>
+                       </div>
+                       <button 
+                        onClick={() => setSelectedProp(item)}
+                        className="bg-white text-[#0B1C3D] border-2 border-[#F5B300] px-4 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest hover:bg-[#0B1C3D] hover:border-[#0B1C3D] hover:text-[#F5B300] transition-all flex items-center gap-2 shadow-sm active:scale-95 whitespace-nowrap"
+                      >
+                        Get Details Now
+                        <ArrowRight size={12} />
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -199,33 +144,82 @@ export default function Properties() {
             ))}
           </AnimatePresence>
         </motion.div>
-
-        {/* FOOTER CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mt-20"
-        >
-          <a href="#contact" className="inline-block">
-  <button 
-    suppressHydrationWarning
-    className="group relative bg-[#0B1C3D] text-white px-10 py-4 rounded-full font-bold text-xs uppercase tracking-[0.2em] overflow-hidden transition-all hover:shadow-2xl hover:shadow-[#0B1C3D]/20 active:scale-95"
-  >
-    <span className="relative z-10 flex items-center gap-3 transition-colors duration-500 group-hover:text-[#0B1C3D]">
-      View All Properties
-      <motion.span 
-        animate={{ x: [0, 5, 0] }} 
-        transition={{ repeat: Infinity, duration: 1.5 }}
-      >
-        →
-      </motion.span>
-    </span>
-    {/* Animated Gold Slide-up background */}
-    <div className="absolute inset-0 bg-[#F5B300] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-  </button>
-</a>
-        </motion.div>
       </div>
+
+      {/* POP-UP MODAL FORM */}
+      <AnimatePresence>
+        {selectedProp && (
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-6 bg-[#0B1C3D]/80 backdrop-blur-md">
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="bg-white w-full max-w-lg rounded-[2.5rem] overflow-hidden shadow-2xl relative">
+              <button onClick={() => setSelectedProp(null)} className="absolute top-6 right-6 p-2 text-gray-400 hover:text-[#0B1C3D] z-10 transition-colors"><X size={24} /></button>
+              
+              <div className="p-8 md:p-12">
+                <span className="text-[#F5B300] text-[10px] font-black uppercase tracking-[0.3em] mb-2 block italic">Strategic Inquiry</span>
+                <h3 className="font-serif text-3xl font-bold text-[#0B1C3D] mb-4">{selectedProp.title}</h3>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input required type="text" placeholder="Full Name" className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] transition-colors" />
+                  <input required type="email" placeholder="Email Address" className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] transition-colors" />
+                  
+                  <button 
+                    disabled={isSubmitting || isSuccess}
+                    className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-500 ${
+                      isSuccess ? "bg-green-600 text-white scale-[1.02]" : "bg-[#0B1C3D] text-[#F5B300] hover:bg-[#0B1C3D]/90"
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }}>
+                        <Send size={16} />
+                      </motion.div>
+                    ) : isSuccess ? (
+                      <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex items-center gap-2">
+                        <Check size={18} strokeWidth={3} />
+                        Details shared successfully
+                      </motion.div>
+                    ) : (
+                      "Submit Inquiry"
+                    )}
+                  </button>
+                </form>
+
+                <div className="mt-8 flex flex-col items-center gap-5">
+  {/* Elegant Separator Line */}
+  <div className="w-full h-[1px] bg-gray-100 relative">
+    <span className="absolute left-1/2 -top-2 -translate-x-1/2 bg-white px-3 text-[9px] text-gray-400 uppercase tracking-widest font-bold">
+      Direct Access
+    </span>
+  </div>
+
+  {/* Premium WhatsApp Button */}
+  <a 
+    href="https://wa.me/919899152327" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-full group bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-[#25d366]/20 active:scale-[0.98]"
+  >
+    <motion.div
+      whileHover={{ rotate: [0, -10, 10, 0] }}
+      transition={{ duration: 0.5 }}
+    >
+      <MessageCircle size={20} fill="currentColor" stroke="none" />
+    </motion.div>
+    
+    <span className="font-bold text-sm uppercase tracking-wider">
+      WhatsApp Us
+    </span>
+    
+    {/* Subtle status indicator */}
+    <div className="flex items-center gap-1.5 ml-1 opacity-80">
+      <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+      <span className="text-[10px] font-medium uppercase tracking-tighter">Online</span>
+    </div>
+  </a>
+</div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
