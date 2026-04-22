@@ -7,14 +7,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-export const metadata = {
-  title: 'Terms of Service | Realtyfm',
-  description: 'Review the terms and conditions for using the Realtyfm platform. Understand our service agreement for NRI real estate investment advisory and platform usage.',
-  openGraph: {
-    title: 'Terms of Service | Realtyfm',
-    description: 'The legal framework and user agreement for Realtyfm investors.',
-  },
-};
+
 
 export default function TermsOfService() {
   const lastUpdated = "April 15, 2026";
