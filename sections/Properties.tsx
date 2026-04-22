@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, MapPin, Building2, CheckCircle2, X, MessageCircle, Send, Check } from "lucide-react";
+import { ArrowRight, MapPin, Building2, CheckCircle2, X, MessageCircle, Send, Check, Phone } from "lucide-react";
 
 const properties = [
   { id: 1, title: "Smartworld One DXP", location: "Dwarka Expressway, Sector 113", type: "Apartments", price: "₹1.85 Cr onwards", roi: "536%", tag: "Hot Selling", category: "buy", image: "/property-1.jpg" },
@@ -19,19 +19,43 @@ export default function Properties() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Form State
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: ""
+  });
+
   const filtered = active === "all" ? properties : properties.filter((p) => p.category === active);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const ownerPhone = "919899152327";
+
     setTimeout(() => {
       setIsSubmitting(false);
+
+      // 1. WhatsApp Redirect Logic
+      const message = `*Property Inquiry - RealtyFM*%0A` +
+                      `--------------------------%0A` +
+                      `*Property:* ${selectedProp.title}%0A` +
+                      `*Name:* ${formData.name}%0A` +
+                      `*Mobile:* ${formData.phone}%0A` +
+                      `*Email:* ${formData.email}%0A` +
+                      `*Location:* ${selectedProp.location}`;
+
+      window.open(`https://wa.me/${ownerPhone}?text=${message}`, '_blank');
+
+      // 2. UI Success Logic
       setIsSuccess(true);
       setTimeout(() => {
         setIsSuccess(false);
         setSelectedProp(null);
+        setFormData({ name: "", email: "", phone: "" }); 
       }, 3000);
-    }, 1500);
+    }, 1200);
   };
 
   return (
@@ -84,7 +108,7 @@ export default function Properties() {
           ))}
         </div>
 
-        {/* PROPERTY GRID - Fixed spacing and responsiveness */}
+        {/* PROPERTY GRID */}
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <AnimatePresence mode="popLayout">
             {filtered.map((item) => (
@@ -92,8 +116,9 @@ export default function Properties() {
                 layout
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
+                viewport={{ once: true }}
                 className="group relative bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
               >
                 <div className="relative h-56 overflow-hidden flex-shrink-0">
@@ -158,8 +183,33 @@ export default function Properties() {
                 <h3 className="font-serif text-3xl font-bold text-[#0B1C3D] mb-4">{selectedProp.title}</h3>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <input required type="text" placeholder="Full Name" className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] transition-colors" />
-                  <input required type="email" placeholder="Email Address" className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] transition-colors" />
+                  <div className="relative">
+                    <input 
+                      required 
+                      type="text" 
+                      placeholder="Full Name" 
+                      className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] transition-colors text-[#0B1C3D]" 
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    />
+                  </div>
+                  <div className="relative">
+                    <input 
+                      required 
+                      type="tel" 
+                      placeholder="Mobile Number" 
+                      className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] transition-colors text-[#0B1C3D]" 
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    />
+                  </div>
+                  <div className="relative">
+                    <input 
+                      required 
+                      type="email" 
+                      placeholder="Email Address" 
+                      className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] transition-colors text-[#0B1C3D]" 
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    />
+                  </div>
                   
                   <button 
                     disabled={isSubmitting || isSuccess}
@@ -174,47 +224,33 @@ export default function Properties() {
                     ) : isSuccess ? (
                       <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex items-center gap-2">
                         <Check size={18} strokeWidth={3} />
-                        Details shared successfully
+                        Details Shared
                       </motion.div>
                     ) : (
-                      "Submit Inquiry"
+                      "Secure Full Details"
                     )}
                   </button>
                 </form>
 
                 <div className="mt-8 flex flex-col items-center gap-5">
-  {/* Elegant Separator Line */}
-  <div className="w-full h-[1px] bg-gray-100 relative">
-    <span className="absolute left-1/2 -top-2 -translate-x-1/2 bg-white px-3 text-[9px] text-gray-400 uppercase tracking-widest font-bold">
-      Direct Access
-    </span>
-  </div>
+                  <div className="w-full h-[1px] bg-gray-100 relative">
+                    <span className="absolute left-1/2 -top-2 -translate-x-1/2 bg-white px-3 text-[9px] text-gray-400 uppercase tracking-widest font-bold">
+                      Institutional Connect
+                    </span>
+                  </div>
 
-  {/* Premium WhatsApp Button */}
-  <a 
-    href="https://wa.me/919899152327" 
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-full group bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-[#25d366]/20 active:scale-[0.98]"
-  >
-    <motion.div
-      whileHover={{ rotate: [0, -10, 10, 0] }}
-      transition={{ duration: 0.5 }}
-    >
-      <MessageCircle size={20} fill="currentColor" stroke="none" />
-    </motion.div>
-    
-    <span className="font-bold text-sm uppercase tracking-wider">
-      WhatsApp Us
-    </span>
-    
-    {/* Subtle status indicator */}
-    <div className="flex items-center gap-1.5 ml-1 opacity-80">
-      <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-      <span className="text-[10px] font-medium uppercase tracking-tighter">Online</span>
-    </div>
-  </a>
-</div>
+                  <a 
+                    href="https://wa.me/919899152327" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full group bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-[#25d366]/20 active:scale-[0.98]"
+                  >
+                    <MessageCircle size={20} fill="currentColor" stroke="none" />
+                    <span className="font-bold text-sm uppercase tracking-wider">
+                      WhatsApp Advisor
+                    </span>
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>

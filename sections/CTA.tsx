@@ -30,18 +30,28 @@ export default function CTA() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // 1. Simulate API Call / Backend logic
-    // In a real app, you'd fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
+    // 1. Simulate short processing delay
     setTimeout(() => {
       setIsSubmitting(false);
-      setShowPopup(true);
       
-      // 2. OWNER NOTIFICATION (WhatsApp Redirect Method)
-      // This will open the owner's WhatsApp with the user's details pre-filled
-      const ownerPhone = "91XXXXXXXXXX"; // REPLACE WITH OWNER'S PHONE NUMBER
-      const message = `New Lead from RealtyFM:%0A- Name: ${formData.name}%0A- Phone: ${formData.phone}%0A- Budget: ${formData.budget}`;
+      // 2. WHATSAPP REDIRECT (Direct to Owner)
+      const ownerPhone = "919899152327"; // Your exact number
+      
+      // Constructing the encoded message
+      const message = `*RealtyFM*%0A` +
+                      `--------------------------%0A` +
+                      `*Name:* ${formData.name}%0A` +
+                      `*Phone:* ${formData.phone}%0A` +
+                      `*Email:* ${formData.email}%0A` +
+                      `*Country:* ${formData.country}%0A` +
+                      `*Budget:* ${formData.budget}`;
+
+      // Open WhatsApp in a new tab
       window.open(`https://wa.me/${ownerPhone}?text=${message}`, '_blank');
-    }, 1500);
+
+      // 3. SHOW THE SUCCESS POPUP
+      setShowPopup(true);
+    }, 800);
   };
 
   const containerVariants: Variants = {
@@ -77,9 +87,9 @@ export default function CTA() {
               <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 size={40} />
               </div>
-              <h3 className="font-serif text-3xl text-[#0B1C3D] mb-4">Contact Details Shared</h3>
+              <h3 className="font-serif text-3xl text-[#0B1C3D] mb-4">Details Shared</h3>
               <p className="text-gray-500 mb-8 leading-relaxed">
-                Thank you, <span className="font-bold text-[#0B1C3D]">{formData.name}</span>. Your request has been transmitted. An investment strategist will contact you shortly.
+                Thank you, <span className="font-bold text-[#0B1C3D]">{formData.name}</span>. Your inquiry has been forwarded to our strategist via WhatsApp. 
               </p>
               <button 
                 onClick={() => setShowPopup(false)}
@@ -95,20 +105,18 @@ export default function CTA() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           
-          {/* LEFT CONTENT */}
           <div className="lg:col-span-6">
             <motion.div initial="hidden" animate={isVisible ? "visible" : "hidden"} variants={containerVariants}>
               <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
                 <div className="px-3 py-1 bg-[#F5B300]/10 border border-[#F5B300]/20 rounded-full flex items-center gap-2">
                     <Globe2 size={12} className="text-[#F5B300]" />
-                    <span className="text-[10px] tracking-[0.3em] text-[#F5B300] font-black uppercase">Take The First Step</span>
+                    <span className="text-[10px] tracking-[0.3em] text-[#F5B300] font-black uppercase">Direct Engagement</span>
                 </div>
               </motion.div>
 
               <motion.h2 variants={itemVariants} className="font-serif text-5xl md:text-5xl text-white leading-[1.1] mb-8 tracking-tight">
-                Most NRI Investors Act
-Before the Mainstream
-Notices, <br />
+                Most NRI Investors Act <br />
+                Before the Mainstream <br />
                 <span className="italic text-gray-400 font-light text-4xl md:text-6xl">Direct to You.</span>
               </motion.h2>
 
@@ -123,7 +131,6 @@ Notices, <br />
             </motion.div>
           </div>
 
-          {/* RIGHT CONTENT: THE FORM */}
           <div className="lg:col-span-6">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -132,29 +139,29 @@ Notices, <br />
             >
               <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-5">
                 <input
-                suppressHydrationWarning
                   required
                   placeholder="Full Name"
+                  autoComplete="name"
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   className="w-full bg-[#0B1C3D]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder-gray-500 outline-none focus:border-[#F5B300]/50"
                 />
                 <input
-                suppressHydrationWarning
                   required
                   type="email"
+                  autoComplete="email"
                   placeholder="Email Address"
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   className="w-full bg-[#0B1C3D]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder-gray-500 outline-none focus:border-[#F5B300]/50"
                 />
                 <input
-                suppressHydrationWarning
                   required
+                  type="tel"
+                  autoComplete="tel"
                   placeholder="Phone Number"
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   className="w-full bg-[#0B1C3D]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder-gray-500 outline-none focus:border-[#F5B300]/50"
                 />
                 <input
-                suppressHydrationWarning
                   required
                   placeholder="Current Country"
                   onChange={(e) => setFormData({...formData, country: e.target.value})}
@@ -162,30 +169,32 @@ Notices, <br />
                 />
 
                 <div className="sm:col-span-2">
-                  <select suppressHydrationWarning
+                  <select 
+                    required
                     onChange={(e) => setFormData({...formData, budget: e.target.value})}
                     className="w-full bg-[#0B1C3D]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-gray-400 outline-none focus:border-[#F5B300]/50 appearance-none"
+                    defaultValue=""
                   >
-                    <option>Select Investment Budget</option>
-                    <option>₹50L - ₹1Cr</option>
-                    <option>₹1Cr - ₹3Cr</option>
-                    <option>₹3Cr+</option>
+                    <option value="" disabled>Select Investment Budget</option>
+                    <option value="₹50L - ₹1Cr">₹50L - ₹1Cr</option>
+                    <option value="₹1Cr - ₹3Cr">₹1Cr - ₹3Cr</option>
+                    <option value="₹3Cr+">₹3Cr+</option>
                   </select>
                 </div>
 
-                <motion.button suppressHydrationWarning
+                <motion.button 
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="sm:col-span-2 bg-[#F5B300] text-[#0B1C3D] py-5 rounded-full font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all disabled:opacity-50"
                 >
-                  {isSubmitting ? "Processing..." : "Get Free Report"} <Send size={14} />
+                  {isSubmitting ? "Generating..." : "Get Free Report"} <Send size={14} />
                 </motion.button>
               </form>
 
               <div className="mt-8 flex items-center justify-center gap-2">
                 <ShieldCheck size={14} className="text-gray-500" />
-                <p className="text-[10px] text-gray-500 uppercase tracking-widest font-medium">GDPR Compliant • Encrypted Transfer</p>
+                <p className="text-[10px] text-gray-500 uppercase tracking-widest font-medium">Direct WhatsApp Transfer • Encrypted</p>
               </div>
             </motion.div>
           </div>

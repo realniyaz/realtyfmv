@@ -20,17 +20,39 @@ export default function Hero() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Form Field States
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: ""
+  });
+
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Your WhatsApp Number
+    const ownerPhone = "919899152327";
+
     setTimeout(() => {
       setIsSubmitting(false);
+      
+      // 1. WhatsApp Redirect Logic
+      const message = `*New Investment Inquiry - RealtyFM*%0A` +
+                      `--------------------------%0A` +
+                      `*Name:* ${formData.name}%0A` +
+                      `*Phone:* ${formData.phone}%0A` +
+                      `*Email:* ${formData.email}`;
+
+      window.open(`https://wa.me/${ownerPhone}?text=${message}`, '_blank');
+
+      // 2. UI Success Logic
       setIsSuccess(true);
       setTimeout(() => {
         setIsSuccess(false);
         setIsModalOpen(false);
       }, 3000);
-    }, 1500);
+    }, 1200);
   };
 
   const containerVariants: Variants = {
@@ -53,7 +75,6 @@ export default function Hero() {
   return (
     <section 
       ref={ref}
-      // lg:min-h-screen ensures full height on desktop, auto on mobile
       className="relative bg-[#0B1C3D] text-white overflow-hidden lg:min-h-screen flex flex-col justify-center"
     >
       {/* Background Visuals */}
@@ -62,7 +83,6 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1C3D]/60 to-[#0B1C3D]" />
       </div>
 
-      {/* Main Content Grid - pt-36 provides the necessary space on mobile */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-36 md:pt-48 pb-10 md:pb-20 grid lg:grid-cols-2 gap-12 items-center">
         
         {/* Left Side: Content */}
@@ -72,7 +92,6 @@ export default function Hero() {
           animate={isVisible ? "visible" : "hidden"}
           className="flex flex-col justify-center space-y-6 md:space-y-8 text-center lg:text-left items-center lg:items-start"
         >
-          {/* Badge */}
           <motion.div 
             variants={itemVariants}
             className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-[#F5B300]/30 text-[#F5B300] px-4 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-[0.15em] uppercase w-fit shadow-lg"
@@ -81,7 +100,6 @@ export default function Hero() {
             NRI Real Estate Investment Platform
           </motion.div>
 
-          {/* Heading */}
           <motion.h1 
             variants={itemVariants}
             className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight"
@@ -91,7 +109,6 @@ export default function Hero() {
             to Your Portfolio
           </motion.h1>
 
-          {/* Subtext */}
           <motion.p 
             variants={itemVariants}
             className="text-gray-400 text-base md:text-xl max-w-xl leading-relaxed font-light"
@@ -99,7 +116,6 @@ export default function Hero() {
             Invest in India&apos;s most coveted corridors — vetted assets trusted by 2,500+ families across 18 countries.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <button 
               onClick={() => setIsModalOpen(true)}
@@ -151,9 +167,7 @@ export default function Hero() {
       {/* Metrics Banner */}
       <div className="border-t border-white/5 bg-black/20 backdrop-blur-md relative z-10">
         <div className="max-w-7xl mx-auto px-6 py-6 md:py-10">
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12"
-          >
+          <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
             {metrics.map((stat, i) => (
               <div key={i} className="flex flex-col items-center md:items-start group">
                 <span className="text-2xl md:text-4xl font-serif font-bold text-white group-hover:text-[#F5B300] transition-colors">
@@ -190,9 +204,27 @@ export default function Hero() {
                 <h3 className="font-serif text-3xl font-bold text-[#0B1C3D] mb-4">Begin Your Journey</h3>
                 
                 <form onSubmit={handleLeadSubmit} className="space-y-4">
-                  <input required type="text" placeholder="Full Name" className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300]" />
-                  <input required type="tel" placeholder="Phone Number" className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300]" />
-                  <input required type="email" placeholder="Email Address" className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300]" />
+                  <input 
+                    required 
+                    type="text" 
+                    placeholder="Full Name" 
+                    className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] text-[#0B1C3D]" 
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  />
+                  <input 
+                    required 
+                    type="tel" 
+                    placeholder="Phone Number" 
+                    className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] text-[#0B1C3D]" 
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  />
+                  <input 
+                    required 
+                    type="email" 
+                    placeholder="Email Address" 
+                    className="w-full bg-[#FAF9F6] border border-gray-100 p-4 rounded-xl text-sm focus:outline-none focus:border-[#F5B300] text-[#0B1C3D]" 
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  />
                   
                   <button 
                     disabled={isSubmitting || isSuccess}
@@ -203,7 +235,7 @@ export default function Hero() {
                     {isSubmitting ? (
                       <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}><Send size={16} /></motion.div>
                     ) : isSuccess ? (
-                      <div className="flex items-center gap-2"><CheckCircle2 size={16} /> Details shared successfully</div>
+                      <div className="flex items-center gap-2"><CheckCircle2 size={16} /> Redirecting to WhatsApp...</div>
                     ) : (
                       "Speak with an Advisor"
                     )}
