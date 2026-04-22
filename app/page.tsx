@@ -17,6 +17,23 @@ import FAQ from "@/sections/Faqs";
 import CTA from "@/sections/CTA";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Realtyfm | Premium NRI Real Estate Investment Platform',
+  description: 'Invest in high-growth Indian real estate with Realtyfm. Trusted by 2,500+ NRI families across 18 countries. Access RERA-verified assets and strategic ROI models.',
+  keywords: 'NRI real estate investment, Indian property investment, buy property in India, Noida real estate, Gurgaon luxury apartments, Realtyfm',
+  openGraph: {
+    title: 'Realtyfm | High-Growth Indian Real Estate Portfolio',
+    description: 'Bespoke selection of North India\'s highest appreciating assets for NRI investors.',
+    images: ['/Realtyfml.png'], // Add a preview image in your public folder
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Realtyfm | Secure NRI Real Estate Investment',
+    description: 'Access RERA-verified investment opportunities in India from anywhere in the world.',
+  },
+};
 
 export default function Home() {
   return (

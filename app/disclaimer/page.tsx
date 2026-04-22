@@ -7,6 +7,15 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
+export const metadata = {
+  title: 'Legal Disclaimer | Realtyfm',
+  description: 'Important legal disclosures regarding real estate investments, ROI projections, and RERA compliance. Read our full investment risk and liability statement.',
+  openGraph: {
+    title: 'Legal Disclaimer | Realtyfm',
+    description: 'Important investment disclosures and risk statements from Realtyfm.',
+  },
+};
+
 export default function DisclaimerPage() {
   const lastReviewed = "April 2026";
 

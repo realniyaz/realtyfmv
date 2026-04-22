@@ -7,6 +7,15 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+export const metadata = {
+  title: 'Privacy Policy | Realtyfm',
+  description: 'Your data security is our priority. Read the Realtyfm Privacy Policy to learn how we protect, encrypt, and manage your personal and investment information.',
+  openGraph: {
+    title: 'Privacy Policy | Realtyfm',
+    description: 'How Realtyfm handles and secures your investment data.',
+  },
+};
+
 export default function PrivacyPolicy() {
   const lastUpdated = "April 15, 2026";
 
