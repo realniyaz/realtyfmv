@@ -31,28 +31,34 @@ export default function Hero() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Your WhatsApp Number
     const ownerPhone = "919899152327";
 
+    // Prepare WhatsApp URL
+    const message = `*New Investment Inquiry - RealtyFM*%0A` +
+                    `--------------------------%0A` +
+                    `*Name:* ${formData.name}%0A` +
+                    `*Phone:* ${formData.phone}%0A` +
+                    `*Email:* ${formData.email}`;
+    
+    const whatsappUrl = `https://wa.me/${ownerPhone}?text=${message}`;
+
+    // Shortened delay (500ms) to stay within mobile browser security window for redirects
     setTimeout(() => {
       setIsSubmitting(false);
       
-      // 1. WhatsApp Redirect Logic
-      const message = `*New Investment Inquiry - RealtyFM*%0A` +
-                      `--------------------------%0A` +
-                      `*Name:* ${formData.name}%0A` +
-                      `*Phone:* ${formData.phone}%0A` +
-                      `*Email:* ${formData.email}`;
+      // MOBILE REDIRECT FIX: Use location.href for smoother hand-off on phones
+      if (/Android|iPhone/i.test(navigator.userAgent)) {
+        window.location.href = whatsappUrl;
+      } else {
+        window.open(whatsappUrl, '_blank');
+      }
 
-      window.open(`https://wa.me/${ownerPhone}?text=${message}`, '_blank');
-
-      // 2. UI Success Logic
       setIsSuccess(true);
       setTimeout(() => {
         setIsSuccess(false);
         setIsModalOpen(false);
       }, 3000);
-    }, 1200);
+    }, 500);
   };
 
   const containerVariants: Variants = {
@@ -235,7 +241,7 @@ export default function Hero() {
                     {isSubmitting ? (
                       <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}><Send size={16} /></motion.div>
                     ) : isSuccess ? (
-                      <div className="flex items-center gap-2"><CheckCircle2 size={16} /> Redirecting to WhatsApp...</div>
+                      <div className="flex items-center gap-2"><CheckCircle2 size={16} /> Redirecting...</div>
                     ) : (
                       "Speak with an Advisor"
                     )}

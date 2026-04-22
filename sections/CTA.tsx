@@ -138,7 +138,7 @@ export default function CTA() {
               className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl"
             >
               <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-5">
-                <input
+                <input suppressHydrationWarning
                   required
                   placeholder="Full Name"
                   autoComplete="name"
